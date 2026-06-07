@@ -48,6 +48,10 @@ app.get("/debug", (req, res) => {
         message: "debug route working"
     });
 });
+app.get("/debug", (req,res)=>{
+    res.send("Debug Works");
+});
+
 app.listen(PORT, () => {
 
     console.log(`Server running on port ${PORT}`);
