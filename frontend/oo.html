@@ -656,7 +656,8 @@ tr:last-child td{border-bottom:none}
 <div class="toast" id="toast"></div>
 
 <script>
-
+const API_URL =
+  "https://losta-backend.onrender.com";
 let items = [];
 
 let currentSection='dashboard';
@@ -669,9 +670,7 @@ async function fetchItems(){
 
   try{
 
-    const response = await fetch(
-      "http://localhost:5000/api/items"
-    );
+    const response = await fetch(`${API_URL}/api/items`);
 
     const data = await response.json();
 
@@ -1079,8 +1078,7 @@ async function submitItem(){
 
   try{
 
-    const response=await fetch(
-      "http://localhost:5000/api/items",
+    const response=awaitfetch(`${API_URL}/api/items`, 
       {
         method:'POST',
 
