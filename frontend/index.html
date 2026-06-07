@@ -257,6 +257,137 @@ tr:last-child td{border-bottom:none}
   .detail-layout,.add-layout,.claim-layout,.profile-grid{grid-template-columns:1fr}
   .filters-row{grid-template-columns:1fr 1fr}
 }
+/* TABLETS */
+@media (max-width: 1024px) {
+
+  .sidebar{
+    width:180px;
+  }
+
+  .main{
+    margin-left:180px;
+  }
+
+  .stats-grid,
+  .items-grid,
+  .search-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .detail-layout,
+  .add-layout,
+  .claim-layout,
+  .profile-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+  .sidebar{
+    display:none;
+  }
+
+  .main{
+    margin-left:0;
+  }
+
+  .content{
+    padding:15px;
+  }
+
+  .topbar{
+    padding:0 15px;
+  }
+
+  .stats-grid,
+  .items-grid,
+  .search-grid{
+    grid-template-columns:1fr;
+  }
+
+  .quick-actions{
+    grid-template-columns:1fr;
+  }
+
+  .filters-row{
+    grid-template-columns:1fr;
+  }
+
+  .detail-layout,
+  .add-layout,
+  .claim-layout,
+  .profile-grid{
+    grid-template-columns:1fr;
+  }
+
+  .form-row{
+    grid-template-columns:1fr;
+  }
+
+  .auth-card{
+    flex-direction:column;
+    width:95%;
+  }
+
+  .auth-left{
+    width:100%;
+    padding:25px;
+  }
+
+  .auth-right{
+    padding:25px;
+  }
+
+  .table-card{
+    overflow-x:auto;
+  }
+
+  table{
+    min-width:700px;
+  }
+
+  .page-title{
+    font-size:22px;
+  }
+
+}
+
+/* SMALL PHONES */
+@media (max-width: 480px){
+
+  .content{
+    padding:10px;
+  }
+
+  .topbar{
+    height:auto;
+    padding:10px;
+  }
+
+  .user-name{
+    display:none;
+  }
+
+  .user-role{
+    display:none;
+  }
+
+  .page-title{
+    font-size:20px;
+  }
+
+  .stat-num{
+    font-size:22px;
+  }
+
+  .item-img{
+    height:100px;
+  }
+
+}
 </style>
 </head>
 <body>
