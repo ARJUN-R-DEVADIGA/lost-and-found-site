@@ -1213,6 +1213,39 @@ async function submitItem(){
 
   const textarea=addSection.querySelector('textarea');
 
+const imageFile =
+document.getElementById("itemImage")
+.files[0];
+
+let imageUrl="";
+
+if(imageFile){
+
+  const formData =
+  new FormData();
+
+  formData.append(
+    "image",
+    imageFile
+  );
+
+  const uploadResponse =
+  await fetch(
+    `${API_URL}/api/upload`,
+    {
+      method:"POST",
+      body:formData
+    }
+  );
+
+  const uploadData =
+  await uploadResponse.json();
+
+  imageUrl =
+  uploadData.imageUrl;
+
+}
+
   const item={
 
     type: selects[0].value,
@@ -1233,7 +1266,8 @@ async function submitItem(){
 
     marks: inputs[5].value,
 
-    emoji:'🎒',
+   image:imageUrl,
+emoji:'🎒',
 
     inside:'-',
 

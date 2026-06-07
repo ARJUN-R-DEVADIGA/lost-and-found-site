@@ -5,7 +5,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 const app = express();
-
+const uploadRoutes =
+require("./routes/uploadRoutes");
 // const cors = require("cors");
 
 app.use(cors({
@@ -35,7 +36,7 @@ mongoose.connect(process.env.MONGO_URI)
 const itemRoutes = require("./routes/itemRoutes");
 
 app.use("/api/items", itemRoutes);
-
+app.use("/api/upload", uploadRoutes);
 app.get("/", (req, res) => {
 
     res.send("Backend Running");

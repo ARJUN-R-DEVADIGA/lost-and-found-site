@@ -12,6 +12,11 @@ const itemSchema = new mongoose.Schema({
 
     date: String,
 
+    image:{
+  type:String,
+  default:""
+},
+
     emoji: String,
 
     color: String,
