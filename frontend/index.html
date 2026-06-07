@@ -507,7 +507,7 @@ tr:last-child td{border-bottom:none}
 
     <!-- DASHBOARD -->
     <div id="sect-dashboard" class="content">
-      <div class="page-title">Welcome back, John! 👋</div>
+      <div class="page-title">Welcome back, User! 👋</div>
       <div class="page-sub">Here's what's happening with lost and found items.</div>
       <div class="stats-grid">
         <div class="stat-card"><div class="stat-icon blue">🎒</div><div><div class="stat-num">12</div><div class="stat-label">Total Lost Items</div></div></div>
@@ -630,17 +630,54 @@ tr:last-child td{border-bottom:none}
           </div>
           <div class="form-group"><label>Other Identifying Marks <span style="font-size:11px;color:var(--gray-400)">(Optional)</span></label><input class="form-control no-icon" placeholder="Small white logo on front pocket" value="Small white logo on front pocket"/></div>
           <div class="form-group">
-            <label>Upload Image</label>
-            <div class="upload-area" onclick="fakeUpload()">
-              <div class="upload-icon">☁️</div>
-              <div class="upload-text">Drag &amp; drop an image here, or <span>click to browse</span></div>
-              <div class="upload-text">JPG, PNG up to 5MB</div>
-            </div>
-            <div class="upload-preview" id="upload-preview" style="display:none">
-              <div class="preview-thumb">🎒<button class="remove-preview" onclick="removePreview()">×</button></div>
-              <div class="upload-hint">backpack.jpg · 2.4 MB</div>
-            </div>
-          </div>
+  <label>Upload Image</label>
+
+  <input
+    type="file"
+    id="itemImage"
+    accept="image/*"
+    capture="environment"
+    style="display:none"
+    onchange="previewImage(event)"
+  >
+
+  <div class="upload-area"
+       onclick="document.getElementById('itemImage').click()">
+
+    <div class="upload-icon">☁️</div>
+
+    <div class="upload-text">
+      Drag & drop an image here, or
+      <span>click to browse</span>
+    </div>
+
+    <div class="upload-text">
+      JPG, PNG up to 5MB
+    </div>
+
+  </div>
+
+  <div class="upload-preview"
+       id="upload-preview"
+       style="display:none">
+
+      <img
+        id="preview-img"
+        style="
+          width:72px;
+          height:72px;
+          border-radius:8px;
+          object-fit:cover;
+        "
+      >
+
+      <div
+        class="upload-hint"
+        id="file-name">
+      </div>
+
+  </div>
+</div>
           <div style="display:flex;gap:10px;margin-top:4px">
             <button class="btn btn-primary" onclick="submitItem()">📤 Submit Item</button>
             <button class="btn btn-ghost" onclick="navTo('dashboard')">Cancel</button>
@@ -1300,16 +1337,27 @@ function togglePw(id,btn){
 
 
 // IMAGE PREVIEW
-function fakeUpload(){
+function previewImage(event){
 
-  document.getElementById(
-    'upload-preview'
-  ).style.display='flex';
+  const file = event.target.files[0];
 
-  showToast(
-    'Image uploaded successfully!',
-    'success'
-  );
+  if(!file) return;
+
+  document
+    .getElementById("upload-preview")
+    .style.display = "flex";
+
+  document
+    .getElementById("preview-img")
+    .src = URL.createObjectURL(file);
+
+  document
+    .getElementById("file-name")
+    .textContent =
+      file.name +
+      " • " +
+      (file.size/1024/1024).toFixed(2) +
+      " MB";
 
 }
 
