@@ -6,7 +6,15 @@ const cors = require("cors");
 
 const app = express();
 
-app.use(cors());
+const cors = require("cors");
+
+app.use(cors({
+  origin: [
+    "https://lost-and-found-2.vercel.app"
+  ],
+  methods: ["GET","POST","PUT","DELETE"],
+  credentials: true
+}));
 
 app.use(express.json());
 
