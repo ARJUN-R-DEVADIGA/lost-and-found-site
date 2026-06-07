@@ -1,5 +1,0 @@
-# dxysols8o
-
-# 599529873168121 = API KEY
-
-# DQgGbT7Cc7m9a9hVzMI9KGtlPQE == API SECRet key
